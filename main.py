@@ -33,6 +33,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("mainWindow")
         self.move(400,400)
+
         self.resize(widthWindow,heightWindow)
         self.initUI()
 
@@ -61,8 +62,25 @@ class MainWindow(QMainWindow):
 
 
 
+
     def save(self):
-        pass
+      pass
+
+        self.btnSave = QPushButton("Сохранить",self)
+        self.btnSave.move(100,50)
+        self.btn.resize(50,30)
+        self.btnSave.show()
+
+        self.btnSaveHow = QPushButton("Сохранить как",self)
+        self.btnSaveHow.move(100,80)
+        self.btnSaveHow.resize(100,30)
+        self.btnSaveHow.show()
+
+        self.OpenFile = QPushButton("Открыть файл",self)
+        self.OpenFile.move(100,20)
+        self.OpenFile.resize(100,30)
+        self.OpenFile.show()
+
 
 
 
