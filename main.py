@@ -1,31 +1,71 @@
 from PyQt5.QtWidgets import *
 import sys
 
+mainSize = 144
+countRow = 7
+
+widthWindow  = 5*mainSize
+heightWindow = 4*mainSize
+
+sideSize = heightWindow//(countRow + 5)
+# Размеры----------------------------------------
+heightTableTitle = sideSize*1
+widthTableTitle  = widthWindow - sideSize*4
+
+heightTableOutput = sideSize*(countRow)
+widthTableOutput  = widthWindow - sideSize*4
+
+heightTableInput = sideSize*1
+widthTableInput  = widthWindow - sideSize*4
+# Смещения----------------------------------------
+horizontalMoveTableTitle =  sideSize*2
+verticalMoveTableTitle =  sideSize*2
+
+horizontalMoveTableOutput =  sideSize*2
+verticalMoveTableOutput =  sideSize*3
+
+horizontalMoveTableInput =  sideSize*2
+verticalMoveTableInput =  sideSize*(3+countRow)
+#-------------------------------------------------
 class MainWindow(QMainWindow):
     countNumber = 0
     def __init__(self):
         super().__init__()
         self.setWindowTitle("mainWindow")
         self.move(400,400)
-        self.resize(720,576)
+
+        self.resize(widthWindow,heightWindow)
         self.initUI()
 
     def initUI(self):
-        self.btn = QPushButton("Файл",self)
-        self.btn.clicked.connect(self.save)
-        self.btn.move(50,50)
-        self.btn.resize(50,30)
-        self.exel = QTableWidget(self)
-        self.exel.setRowCount(10)
-        self.exel.setColumnCount(3)
-        self.exel.move(100,100)
-        self.exel.resize(405,402)
+        # Заголовок таблица
+        self.tableTitle = QTableWidget(self)
+        self.tableTitle.setColumnCount(3)
+        self.tableTitle.setRowCount(1)
+        self.tableTitle.resize(widthTableTitle,heightTableTitle)
+        self.tableTitle.move(horizontalMoveTableTitle,verticalMoveTableTitle)
+        # Таблица вывода
+        self.tableOutput = QTableWidget(self)
+        self.tableOutput.setColumnCount(3)
+        self.tableOutput.setRowCount(countRow)
+        self.tableOutput.resize(widthTableOutput,heightTableOutput)
+        self.tableOutput.move(horizontalMoveTableOutput,verticalMoveTableOutput)
+        # Таблица ввода
+        self.tableInput = QTableWidget(self)
+        self.tableInput.setColumnCount(3)
+        self.tableInput.setRowCount(1)
+        self.tableInput.resize(widthTableInput,heightTableInput)
+        self.tableInput.move(horizontalMoveTableInput,verticalMoveTableInput)
+
+
 
 
 
 
 
     def save(self):
+      pass
+
         self.btnSave = QPushButton("Сохранить",self)
         self.btnSave.move(100,50)
         self.btn.resize(50,30)
@@ -40,6 +80,7 @@ class MainWindow(QMainWindow):
         self.OpenFile.move(100,20)
         self.OpenFile.resize(100,30)
         self.OpenFile.show()
+
 
 
 
