@@ -11,7 +11,7 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.btn = QPushButton("Фыйл",self)
+        self.btn = QPushButton("Файл",self)
         self.btn.clicked.connect(self.save)
         self.btn.move(50,50)
         self.btn.resize(50,30)
