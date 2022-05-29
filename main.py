@@ -7,7 +7,7 @@ countRow = 7
 widthWindow  = 5*mainSize
 heightWindow = 4*mainSize
 
-sideSize = heightWindow//(countRow + 5)
+sideSize = heightWindow // (countRow + 5)
 # Размеры----------------------------------------
 heightTableTitle = sideSize*1
 widthTableTitle  = widthWindow - sideSize*4
@@ -27,6 +27,9 @@ verticalMoveTableOutput =  sideSize*3
 horizontalMoveTableInput =  sideSize*2
 verticalMoveTableInput =  sideSize*(3+countRow)
 #-------------------------------------------------
+
+
+
 class MainWindow(QMainWindow):
     countNumber = 0
     def __init__(self):
@@ -44,49 +47,36 @@ class MainWindow(QMainWindow):
         self.tableTitle.setRowCount(1)
         self.tableTitle.resize(widthTableTitle,heightTableTitle)
         self.tableTitle.move(horizontalMoveTableTitle,verticalMoveTableTitle)
+        self.tableTitle.verticalHeader().hide()
+        self.tableTitle.horizontalHeader().hide()
+        self.tableTitle.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableTitle.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableTitle.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+
         # Таблица вывода
         self.tableOutput = QTableWidget(self)
         self.tableOutput.setColumnCount(3)
         self.tableOutput.setRowCount(countRow)
         self.tableOutput.resize(widthTableOutput,heightTableOutput)
         self.tableOutput.move(horizontalMoveTableOutput,verticalMoveTableOutput)
+        self.tableOutput.verticalHeader().hide()
+        self.tableOutput.horizontalHeader().hide()
+        self.tableOutput.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableOutput.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        def _handleDoubleClick(self, item):
+
+		
         # Таблица ввода
         self.tableInput = QTableWidget(self)
         self.tableInput.setColumnCount(3)
         self.tableInput.setRowCount(1)
         self.tableInput.resize(widthTableInput,heightTableInput)
         self.tableInput.move(horizontalMoveTableInput,verticalMoveTableInput)
-
-
-
-
-
-
-
-    def save(self):
-      pass
-
-        self.btnSave = QPushButton("Сохранить",self)
-        self.btnSave.move(100,50)
-        self.btn.resize(50,30)
-        self.btnSave.show()
-
-        self.btnSaveHow = QPushButton("Сохранить как",self)
-        self.btnSaveHow.move(100,80)
-        self.btnSaveHow.resize(100,30)
-        self.btnSaveHow.show()
-
-        self.OpenFile = QPushButton("Открыть файл",self)
-        self.OpenFile.move(100,20)
-        self.OpenFile.resize(100,30)
-        self.OpenFile.show()
-
-
-
-
-
-
-
+        self.tableInput.verticalHeader().hide()
+        self.tableInput.horizontalHeader().hide()
+        self.tableInput.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableInput.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableInput.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
 if __name__ =="__main__":
     app = QApplication(sys.argv)
     win = MainWindow()
